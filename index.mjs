@@ -32,27 +32,8 @@ const execute = async () => {
 
         const Joseph =  Character.from(playerData, potionsBag);
         showCharacter(Joseph);
-        //console.log(Joseph);
-
-        // const potion1 = cauldron.createPotion("Bear Claws", "Bee");
         
-
-        // const potion2 = cauldron.createPotion("Chicken's Egg", "Chaurus Eggs");
-      
-        // const potion3 = cauldron.createPotion("Chaurus Eggs", "Bleeding Crown");
-      
-
-        // const potion4 = cauldron.createPotion("Nightshade", "Ectoplasm");
-        
-
-        // const potions = [];
-
-        // potions.push(potion1);
-        // potions.push(potion2);
-        // potions.push(potion3);
-        // potions.push(potion4);
-
-        // console.log(potions);
+        Joseph.drinkEmAll();
 
     }
     catch(error)
