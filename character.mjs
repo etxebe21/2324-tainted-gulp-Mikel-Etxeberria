@@ -11,14 +11,14 @@ export default class Character
         this.potions = potions;
     }
 
-    static from (dataBag, potions)
+    static from (playerData, potions)
     {
         return new Character(
 
-            dataBag.name + " the " + playerData.class,
-            dataBag.health,
-            dataBag.magick,
-            dataBag.stamina,
+            playerData.name + " the " + playerData.class,
+            playerData.health,
+            playerData.magick,
+            playerData.stamina,
             potions
         )
     }

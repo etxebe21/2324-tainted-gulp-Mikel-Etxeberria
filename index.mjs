@@ -2,6 +2,7 @@ import { getData, getBags } from "./service.mjs";
 import Cauldron from "./cauldron.mjs";
 import PotionBag from "./PotionBag.mjs";
 import Ingredients from "./ingredients.mjs";
+import Character from "./character.mjs";
 
 
 const execute = async () => {
@@ -14,6 +15,8 @@ const execute = async () => {
 
         const dataBag = await getBags();
 
+        const playerData = dataBag.players[0];
+
         const potionbag = dataBag.players[0].pouch_red;
 
         //Creamos los ingredientes
@@ -21,12 +24,15 @@ const execute = async () => {
 
         const cauldron = new Cauldron(ingredients);
         // console.log(`Calderos: `, cauldron);
-	
+        
         const potionBag = new PotionBag(ingredients);
         const potionsBag = potionBag.createPotions(potionbag, cauldron);
-        showPotions(potionsBag);
-    
-        // console.log(potionsBag);
+        //showPotions(potionsBag);
+        //console.log(potionsBag);
+
+        const Joseph =  Character.from(playerData, potionsBag);
+        showCharacter(Joseph);
+        //console.log(Joseph);
 
         // const potion1 = cauldron.createPotion("Bear Claws", "Bee");
         
@@ -81,3 +87,20 @@ const showPotions = (potionsBag) => {
     });
 
 }
+
+const showCharacter = (Joseph) => {
+
+        console.log(`-----------------------------`);
+        console.log(` Name: ${Joseph.fullName}`);
+        console.log(`-----------------------------`);
+        console.log(` Health: ${Joseph.health}`);
+        console.log(` Magick: ${Joseph.magick}`);
+        console.log(` Stamina: ${Joseph.stamina}`);
+
+        Joseph.potions.forEach((potion, index) => {
+            console.log(` Potion  ${index + 1}. ${potion.name}`);
+}
+        )
+
+}
+
