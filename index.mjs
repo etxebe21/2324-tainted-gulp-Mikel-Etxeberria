@@ -1,5 +1,4 @@
 import { getData, getBags } from "./service.mjs";
-import Ingredients from "./ingredients.mjs";
 import Cauldron from "./cauldron.mjs";
 
 const execute = async () => {
