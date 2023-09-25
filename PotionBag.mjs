@@ -4,7 +4,7 @@ export default class PotionBag {
    
     constructor(potions) 
     {
-        this.potions = potions || [];
+        this.potions = potions;
     }
 
     createPotions(ingredients, cauldron) {
@@ -23,24 +23,8 @@ export default class PotionBag {
             }
         }
 
-        this.potions.push(...createdPotions);
-
         return createdPotions;
     }
 }
 
-// export default class PotionBag {
-//     constructor() {
-//         this.potions = [];
-//     }
-
-//     createPotions(ingredients, cauldron) {
-//         ingredients.forEach((ingredient1, index1) => {
-//             ingredients.slice(index1 + 1).forEach((ingredient2) => {
-//                 const potion = cauldron.createPotion(ingredient1, ingredient2);
-//                 this.potions.push(potion);
-//             });
-//         });
-//     }
-// }
 

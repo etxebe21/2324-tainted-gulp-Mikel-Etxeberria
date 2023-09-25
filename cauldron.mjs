@@ -27,12 +27,6 @@ export default class Cauldron
             );
         }
     }
-
-
-findIngredientByName(name) {
-    return this.ingredients.find(ingredient => ingredient.name === name);
-  }
-
 }
 
 export function isPotionOfSanity(i1, i2) {

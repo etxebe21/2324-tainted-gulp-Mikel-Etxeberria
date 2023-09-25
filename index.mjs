@@ -1,6 +1,7 @@
 import { getData, getBags } from "./service.mjs";
 import Cauldron from "./cauldron.mjs";
 import PotionBag from "./PotionBag.mjs";
+import Ingredients from "./ingredients.mjs";
 
 
 const execute = async () => {
@@ -11,26 +12,21 @@ const execute = async () => {
         
         const data = ingredientsData["ingredients"];
 
-        const bagData = await getBags();
+        const dataBag = await getBags();
 
-        const dataBag = bagData["players"];
+        const potionbag = dataBag.players[0].pouch_red;
 
-        const ingredientNames = dataBag.pouch_red;
-        const ingredients = ingredientNames.map(name => cauldron.findIngredientByName(name));
+        //Creamos los ingredientes
+        const ingredients = Ingredients.load(data);
 
+        const cauldron = new Cauldron(ingredients);
+        // console.log(`Calderos: `, cauldron);
+	
+        const potionBag = new PotionBag(ingredients);
+        const potionsBag = potionBag.createPotions(potionbag, cauldron);
         // showIngredients(dataBag);
-      
-        const cauldron = new Cauldron(data);
-        console.log(`Calderos: `, cauldron);
-
-        const potionBag = new PotionBag(); // Crear un objeto PotionBag
-
-        potionBag.createPotions(ingredients, cauldron); // Llenar el PotionBag con las pociones
-
-        const potions = potionBag.potions // Obtener la lista de pociones
-
-        console.log("Lista de pociones:");
-        console.log(potions);
+    
+        console.log(potionsBag);
 
         // const potion1 = cauldron.createPotion("Bear Claws", "Bee");
         
