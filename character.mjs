@@ -22,33 +22,59 @@ export default class Character
             potions
         )
     }
-
     drinkEmAll() {
         this.potions.forEach((potion) => {
-            switch (potion.name) {
-                case 'Potion of Restore Health':
-                    this.health += potion.value;
-                    break;
-                case 'Potion of Restore Magicka':
-                    this.magick += potion.value;
-                    break;
-                case 'Potion of Restore Stamina':
-                    this.stamina += potion.value;
-                    break;
-                default:
-                    // Para todas las demás pociones
-                    this.health++;
-                    this.magick++;
-                    this.stamina++;
-                    break;
+            if (potion.name.startsWith('Potion')) {
+                
+                switch (potion.name) {
+                    case 'Potion of Restore Health':
+                        this.health += potion.value;
+                        break;
+                    case 'Potion of Restore Magicka':
+                        this.magick += potion.value;
+                        break;
+                    case 'Potion of Restore Stamina':
+                        this.stamina += potion.value;
+                        break;
+                    default:
+                        
+                        this.health++;
+                        this.magick++;
+                        this.stamina++;
+                        break;
+                }
+            } else if (potion.name.startsWith('Poison')) {
+                
+                switch (potion.name) {
+                    case 'Poison of Damage Health':
+                        this.health -= potion.value;
+                        break;
+                    case 'Poison of Damage Magicka':
+                        this.magick -= potion.value;
+                        break;
+                    case 'Poison of Damage Stamina':
+                        this.stamina -= potion.value;
+                        break;
+                    default:
+                        
+                        this.health--;
+                        this.magick--;
+                        this.stamina--;
+                        break;
+                }
             }
             console.log(`${this.fullName} drank ${potion.name}`);
-            this.showAttributes();
+            this.showAttributes(); 
+            
+            
+            if (this.health <= 0 || this.magick <= 0 || this.stamina <= 0) {
+                console.log(`${this.fullName} ha perdido el juego.`);
+                return; 
+            }
         });
-
-        // Luego de beber las pociones, puedes mostrar los atributos actualizados
-        
     }
+        
+    
 
     showAttributes(){
 
