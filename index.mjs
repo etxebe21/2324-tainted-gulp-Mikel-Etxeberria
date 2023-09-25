@@ -8,6 +8,8 @@ const execute = async () => {
         const responseData = await getData();
         
         const data = responseData["ingredients"];
+
+        const ingredients = Ingredients.load(data);
       
        
 
