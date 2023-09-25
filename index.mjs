@@ -24,9 +24,9 @@ const execute = async () => {
 	
         const potionBag = new PotionBag(ingredients);
         const potionsBag = potionBag.createPotions(potionbag, cauldron);
-        // showIngredients(dataBag);
+        showPotions(potionsBag);
     
-        console.log(potionsBag);
+        // console.log(potionsBag);
 
         // const potion1 = cauldron.createPotion("Bear Claws", "Bee");
         
@@ -58,7 +58,8 @@ const execute = async () => {
 
 execute();
 
-const showIngredients = (dataBag) => {
+
+const showIngredients = (data) => {
 
     dataBag.forEach(element => {
         const bag = element.pouch_red;
@@ -68,3 +69,15 @@ const showIngredients = (dataBag) => {
 
 }
 
+const showPotions = (potionsBag) => {
+
+    potionsBag.forEach(element => {
+        const name = element.name;
+        const value = element.value;
+        const weight = element.weight;
+        const time = element.time;
+        console.log(` Name: ${name} -> Value:  ${value} -> Weight: ${weight} -> Time:   ${time}`);
+        
+    });
+
+}
